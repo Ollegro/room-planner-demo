@@ -38,7 +38,9 @@ def find_browser() -> str:
 
 
 def start_server(port: int, directory: Path) -> socketserver.TCPServer:
+    """port=0 — ОС сама выдаст свободный порт (устойчиво к висящим процессам)."""
     handler = partial(http.server.SimpleHTTPRequestHandler, directory=str(directory))
+    socketserver.TCPServer.allow_reuse_address = True
     httpd = socketserver.TCPServer(("127.0.0.1", port), handler)
     threading.Thread(target=httpd.serve_forever, daemon=True).start()
     return httpd
@@ -47,7 +49,7 @@ def start_server(port: int, directory: Path) -> socketserver.TCPServer:
 def main() -> None:
     sys.stdout.reconfigure(line_buffering=True)
     parser = argparse.ArgumentParser(description="Скриншот прототипа в headless-браузере")
-    parser.add_argument("--port", type=int, default=8125)
+    parser.add_argument("--port", type=int, default=0, help="0 — выбрать свободный порт автоматически")
     parser.add_argument("--page", default="", help="путь страницы относительно корня проекта")
     parser.add_argument("--out", default="docs/screenshot_demo1.png")
     parser.add_argument("--width", type=int, default=1500)
@@ -56,7 +58,9 @@ def main() -> None:
     args = parser.parse_args()
 
     httpd = start_server(args.port, ROOT)
-    url = f"http://127.0.0.1:{args.port}/{args.page}"
+    port = httpd.server_address[1]
+    url = f"http://127.0.0.1:{port}/{args.page}"
+    print(f"server: {url}")
     try:
         with urllib.request.urlopen(url, timeout=10) as response:
             print(f"server status: {response.status}")

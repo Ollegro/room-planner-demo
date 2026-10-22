@@ -67,7 +67,7 @@ grid.position.y = -0.001;
 scene.add(grid);
 scene.add(new THREE.AxesHelper(1.5));
 
-const state = { plan: null, report: null, built: null, wireframe: false, topView: false };
+const state = { plan: null, report: null, built: null, wireframe: false };
 
 
 function resize() {
@@ -177,8 +177,8 @@ function fitView() {
   const center = box.getCenter(new THREE.Vector3());
   const size = box.getSize(new THREE.Vector3());
   const radius = Math.max(size.x, size.z, size.y) * 0.8 + 1;
-  const direction = state.topView ? new THREE.Vector3(0.001, 1, 0.001) : new THREE.Vector3(1, 0.9, 1).normalize();
-  camera.position.copy(center).addScaledVector(direction.normalize(), radius * 1.6);
+  const direction = new THREE.Vector3(1, 0.9, 1).normalize();
+  camera.position.copy(center).addScaledVector(direction, radius * 1.6);
   controls.target.copy(center);
   controls.update();
 }
@@ -298,13 +298,12 @@ function animate() {
 
 ui.select.innerHTML = PLANS.map((p) => `<option value="${p.file}">${p.title}</option>`).join('');
 
-// План и ракурс можно выбрать ссылкой: ?plan=plans/demo_2rooms.json&view=top
+// План можно выбрать ссылкой: ?plan=plans/demo_2rooms.json (удобно для скриншотов и демо).
 const urlParams = new URLSearchParams(window.location.search);
 const requestedPlan = urlParams.get('plan');
 if (requestedPlan && PLANS.some((p) => p.file === requestedPlan)) {
   ui.select.value = requestedPlan;
 }
-state.topView = urlParams.get('view') === 'top';
 
 bindUi();
 resize();

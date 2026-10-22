@@ -23,10 +23,7 @@ npm start                  # python -m http.server 8000
 
 Страница без сборки и без зависимостей в репозитории: three.js подключается по importmap с CDN.
 
-Полезные ссылки:
-
-- `http://localhost:8000/?plan=plans/demo_2rooms.json` — сразу план с нарушениями
-- `http://localhost:8000/?view=top` — вид сверху
+Полезная ссылка: `http://localhost:8000/?plan=plans/demo_2rooms.json` — сразу открывается план с нарушениями.
 
 ## Тесты логики
 
