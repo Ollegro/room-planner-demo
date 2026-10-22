@@ -1,0 +1,38 @@
+{
+  "name": "Демо 1: студия 4200 x 3600 мм (корректная расстановка)",
+  "units": "mm",
+  "rules": { "minWallClearance": 50, "doorClearance": 900 },
+  "walls": [
+    {
+      "id": "w-south",
+      "start": [0, 0],
+      "end": [4200, 0],
+      "thickness": 150,
+      "height": 2700,
+      "openings": [
+        { "id": "door-entry", "kind": "door", "offset": 2600, "width": 900, "height": 2100, "sill": 0 }
+      ]
+    },
+    { "id": "w-east", "start": [4200, 0], "end": [4200, 3600], "thickness": 150, "height": 2700 },
+    {
+      "id": "w-north",
+      "start": [4200, 3600],
+      "end": [0, 3600],
+      "thickness": 150,
+      "height": 2700,
+      "openings": [
+        { "id": "win-1", "kind": "window", "offset": 1200, "width": 1800, "height": 1500, "sill": 800 }
+      ]
+    },
+    { "id": "w-west", "start": [0, 3600], "end": [0, 0], "thickness": 150, "height": 2700 }
+  ],
+  "partitions": [],
+  "furniture": [
+    { "id": "sofa", "type": "sofa", "pos": [1300, 526], "w": 2000, "d": 900, "h": 800, "rotation": 0, "againstWall": true },
+    { "id": "coffee-table", "type": "table", "pos": [1300, 1900], "w": 1100, "d": 600, "h": 420 },
+    { "id": "chair", "type": "chair", "pos": [1300, 2450], "w": 450, "d": 450, "h": 900, "rotation": 180 },
+    { "id": "wardrobe", "type": "wardrobe", "pos": [3824, 1800], "w": 1000, "d": 600, "h": 2400, "rotation": 90, "againstWall": true },
+    { "id": "tv-unit", "type": "box", "pos": [1400, 3324], "w": 1600, "d": 400, "h": 450, "againstWall": true },
+    { "id": "desk", "type": "table", "pos": [2900, 2900], "w": 1200, "d": 600, "h": 750 }
+  ]
+}

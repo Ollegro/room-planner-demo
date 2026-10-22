@@ -1,0 +1,52 @@
+{
+  "name": "Демо 2: 6000 x 4000 мм с перегородкой (расстановка с нарушениями правил)",
+  "units": "mm",
+  "rules": { "minWallClearance": 50, "doorClearance": 900 },
+  "walls": [
+    {
+      "id": "w-south",
+      "start": [0, 0],
+      "end": [6000, 0],
+      "thickness": 150,
+      "height": 2700,
+      "openings": [
+        { "id": "door-entry", "kind": "door", "offset": 300, "width": 900, "height": 2100, "sill": 0 }
+      ]
+    },
+    { "id": "w-east", "start": [6000, 0], "end": [6000, 4000], "thickness": 150, "height": 2700 },
+    {
+      "id": "w-north",
+      "start": [6000, 4000],
+      "end": [0, 4000],
+      "thickness": 150,
+      "height": 2700,
+      "openings": [
+        { "id": "win-1", "kind": "window", "offset": 700, "width": 1800, "height": 1500, "sill": 800 }
+      ]
+    },
+    { "id": "w-west", "start": [0, 4000], "end": [0, 0], "thickness": 150, "height": 2700 }
+  ],
+  "partitions": [
+    {
+      "id": "p-middle",
+      "start": [3000, 0],
+      "end": [3000, 4000],
+      "thickness": 120,
+      "height": 2700,
+      "openings": [
+        { "id": "door-inner", "kind": "door", "offset": 1500, "width": 900, "height": 2100, "sill": 0, "checkClearance": false }
+      ]
+    }
+  ],
+  "furniture": [
+    { "id": "sofa", "type": "sofa", "pos": [2200, 501], "w": 1400, "d": 850, "h": 800, "rotation": 0 },
+    { "id": "shoe-rack", "type": "box", "pos": [800, 400], "w": 700, "d": 300, "h": 450, "rotation": 0 },
+    { "id": "wardrobe", "type": "wardrobe", "pos": [2000, 1500], "w": 1200, "d": 600, "h": 2400, "rotation": 0 },
+    { "id": "table", "type": "table", "pos": [2200, 1500], "w": 1000, "d": 800, "h": 750 },
+    { "id": "fridge", "type": "box", "pos": [3000, 3000], "w": 600, "d": 700, "h": 1800, "rotation": 0 },
+    { "id": "shelf", "type": "box", "pos": [3100, 1950], "w": 400, "d": 500, "h": 1800, "rotation": 0 },
+    { "id": "bed", "type": "bed", "pos": [4400, 2300], "w": 1600, "d": 2000, "h": 600, "rotation": 0 },
+    { "id": "armchair", "type": "chair", "pos": [4200, 700], "w": 800, "d": 800, "h": 850, "rotation": 0 },
+    { "id": "desk", "type": "table", "pos": [5950, 1000], "w": 1200, "d": 600, "h": 750, "rotation": 0 }
+  ]
+}

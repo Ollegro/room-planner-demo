@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Генератор планировки: JSON → 3D-сцена + проверка правил</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js",
+          "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/"
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div id="app">
+      <aside id="panel">
+        <header>
+          <h1>Планировка → 3D</h1>
+          <p class="muted">
+            Прототип: исходные данные (JSON) → 3D-сцена + автоматическая проверка правил дизайна.
+          </p>
+        </header>
+
+        <section>
+          <label class="label" for="plan-select">Пример плана</label>
+          <div class="row">
+            <select id="plan-select"></select>
+            <button id="load-plan" type="button">Загрузить</button>
+          </div>
+        </section>
+
+        <section>
+          <label class="label" for="plan-json">Исходные данные (JSON, мм)</label>
+          <textarea id="plan-json" spellcheck="false"></textarea>
+          <div class="row">
+            <button id="build" type="button" class="primary">Собрать сцену</button>
+            <button id="export" type="button">Экспорт .glb</button>
+          </div>
+          <p class="hint">JSON можно перетащить прямо в окно 3D.</p>
+        </section>
+
+        <section id="status-section">
+          <div id="status" class="status"></div>
+          <div id="metrics" class="metrics"></div>
+        </section>
+
+        <section>
+          <label class="label">Проверки правил</label>
+          <div id="violations" class="violations"></div>
+        </section>
+
+        <section>
+          <label class="label">Отображение</label>
+          <div class="toggles">
+            <label><input type="checkbox" id="toggle-ceiling" /> потолок</label>
+            <label><input type="checkbox" id="toggle-markers" checked /> маркеры нарушений</label>
+            <label><input type="checkbox" id="toggle-wireframe" /> каркас мебели</label>
+          </div>
+        </section>
+
+        <footer class="muted">
+          Логика (geometry / plan / rules) тестируется отдельно: <code>npm test</code>
+        </footer>
+      </aside>
+
+      <main id="viewport">
+        <canvas id="canvas"></canvas>
+        <div id="drop-hint">Отпустите JSON-файл плана</div>
+      </main>
+    </div>
+    <script type="module" src="js/main.js"></script>
+  </body>
+</html>

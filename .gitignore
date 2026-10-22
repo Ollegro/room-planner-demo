@@ -1,0 +1,13 @@
+# зависимости не нужны: three.js подключается по importmap с CDN
+node_modules/
+
+# служебные файлы инструментов и локальных запусков
+docs/*.log
+docs/*.out
+docs/*.err
+docs/*.txt
+
+# временные файлы ОС
+Thumbs.db
+Desktop.ini
+.DS_Store
