@@ -1,6 +1,13 @@
 # зависимости не нужны: three.js подключается по importmap с CDN
 node_modules/
 
+# секреты и локальные конфиги — никогда не коммитим
+.env
+.env.*
+*.env
+token*
+*.token
+
 # служебные файлы инструментов и локальных запусков
 docs/*.log
 docs/*.out
@@ -11,3 +18,4 @@ docs/*.txt
 Thumbs.db
 Desktop.ini
 .DS_Store
+
